@@ -1,3 +1,4 @@
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/aws-dynamodb)
 ---
 name: AWS DynamoDB with Next.js API Routes
 slug: aws-dynamodb-nextjs-api-routes
