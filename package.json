@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.194.0",
+    "@douyinfe/semi-icons": "^2.21.2",
+    "@douyinfe/semi-next": "^2.21.2",
+    "@douyinfe/semi-ui": "^2.21.2",
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
