@@ -1,1 +1,4 @@
-@import '~@douyinfe/semi-ui/dist/css/semi.min.css';
+@import '~@semi-bot/semi-theme-zhhu/semi.min.css';
+.bg-grey-0{
+    background-color: rgb(var(--semi-grey-0));
+}
