@@ -1,4 +1,3 @@
-import * as uuid from 'uuid';
 import {
   DynamoDBClient,
   PutItemCommand,
@@ -6,6 +5,7 @@ import {
   UpdateItemCommand,
   DeleteItemCommand
 } from '@aws-sdk/client-dynamodb';
+const md5 = require('md5');
 
 const client = new DynamoDBClient({
   credentials: {
@@ -21,8 +21,8 @@ export default async function handler(req, res) {
       new PutItemCommand({
         TableName: process.env.TABLE_NAME,
         Item: {
-          id: { S: uuid.v4() },
-          content: { S: req.body.content }
+          id: { S: req.body.id },
+          cn: { S: req.body.cn }
         }
       })
     );
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
       })
     );
 
-    return res.status(200).json(Item);
+    return res.status(200).json(Item?Item.cn:{});
   }
 
   if (req.method === 'POST') {
@@ -50,9 +50,9 @@ export default async function handler(req, res) {
         Key: {
           id: { S: req.body.id }
         },
-        UpdateExpression: 'set content = :c',
+        UpdateExpression: 'set cn = :c',
         ExpressionAttributeValues: {
-          ':c': { S: req.body.content }
+          ':c': { S: req.body.cn }
         },
         ReturnValues: 'ALL_NEW'
       })
